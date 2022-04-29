@@ -1,0 +1,27 @@
+version: "3"
+
+volumes:
+  postgres-db:
+
+services:
+  api:
+    command: python main.py
+    build: .
+    depends_on:
+        - database
+    ports:
+        - 8000:8000
+    volumes:
+        - ./:/usr/src/app
+    env_file:
+        - 'environments/development.env'
+  database:
+    image: postgres:12.7
+    restart: always
+    shm_size: 1gb
+    volumes:
+    - postgres-db:/var/lib/postgresql/data
+    ports: 
+      - "5432:5432"
+    env_file:
+      - 'environments/development.env'
