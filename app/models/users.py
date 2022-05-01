@@ -22,7 +22,7 @@ class Users(Base):
     id = Column(Integer, nullable=False, primary_key=True)
     name = Column(String(20), nullable=False)
     last_name = Column(String(20), nullable=False)
-    _password = Column(String(100), nullable=False)
+    _password = Column(String(120), nullable=False)
     email = Column(String(50), nullable=False)
     cellphone = Column(String(20), nullable=True)
     city = Column(String(50), nullable=False)
